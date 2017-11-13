@@ -19,9 +19,9 @@ class PermissionManager(private val activity: AppCompatActivity) {
 
     fun requestPermission(rq: Int, perms: Array<String>): Boolean {
         this.rq = rq
-        var granted = activity.hasPermission(perms)
+        val granted = activity.hasPermission(perms)
         if (!granted) {
-            var intent = Intent(activity, PermissionActivity::class.java)
+            val intent = Intent(activity, PermissionActivity::class.java)
             intent.putExtra(EXTRA_DATA, perms)
             activity.startActivityForResult(intent, RC_PERM_ACT)
         }

@@ -1,6 +1,7 @@
 package com.mrcompexpert.pm.demo
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -12,8 +13,9 @@ import kotlinx.android.synthetic.main.per_mgr_demo_act.*
 class PermissionManagerDemo : AppCompatActivity() {
 
     private val pm by lazy { PermissionManager(this) }
-    private val RC_PER = 222;
+    private val rcPer = 222
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.per_mgr_demo_act)
@@ -26,13 +28,13 @@ class PermissionManagerDemo : AppCompatActivity() {
 
         }
 
-        var perm = hasPermission(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
+        val perm = hasPermission(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE))
 
         permissionStatus.text = "Permission Status = ${perm}"
 
         if (!perm) {
-            pm.requestPermission(RC_PER,
+            pm.requestPermission(rcPer,
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
                             Manifest.permission.WRITE_EXTERNAL_STORAGE))
         }

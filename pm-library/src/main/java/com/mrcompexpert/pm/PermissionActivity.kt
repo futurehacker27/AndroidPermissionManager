@@ -8,7 +8,7 @@ import android.os.Handler
 
 class PermissionActivity : Activity() {
 
-    lateinit var perms: Array<String>
+    private lateinit var perms: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class PermissionActivity : Activity() {
     }
 
     private fun returnResult() {
-        var intent = Intent()
+        val intent = Intent()
         intent.putExtra(EXTRA_RESULT, hasPermission(perms))
         setResult(Activity.RESULT_OK, intent)
         finish()
